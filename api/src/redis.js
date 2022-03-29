@@ -17,4 +17,5 @@ module.exports = function () {
         console.log(`Using default redis ${redisHost}:${redisPort}`);
         redis = new Redis(redisHost, redisPort);
     }
+    return redis;
 }
