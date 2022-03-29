@@ -43,6 +43,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.enable('trust proxy');
 
 app.use((req, res, next) => {
+  let refDomain = false;
+  if (req.headers.referer) {
+      let u = new URL(req.headers.referer);
+      refDomain = u.hostname;
+  }
+  if (!refDomain && req.headers.host) {
+      let u = new URL('http://' + req.headers.host);
+      refDomain = u.hostname;
+  }
+  req.refDomain = refDomain ? refDomain : 'default';
+  next();
+})
+app.use((req, res, next) => {
   let defSdk = {};
   if (req.headers.host !== undefined) {
     const url = new URL('http://' + req.headers.host);

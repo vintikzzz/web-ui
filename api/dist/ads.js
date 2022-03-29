@@ -14,21 +14,8 @@ module.exports = function (config, app) {
       return;
     }
 
-    let refDomain = false;
-
-    if (req.headers.referer) {
-      let u = new URL(req.headers.referer);
-      refDomain = u.hostname;
-    }
-
-    if (!refDomain && req.headers.host) {
-      let u = new URL('http://' + req.headers.host);
-      refDomain = u.hostname;
-    }
-
-    refDomain = refDomain ? refDomain : 'default';
     const d = config.ads.whitelist.find(e => {
-      return refDomain.includes(e);
+      return req.refDomain.includes(e);
     });
     let ads = true;
     if (d) ads = false;
