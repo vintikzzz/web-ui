@@ -1,0 +1,150 @@
+.btn-group .dropdown-toggle-split {
+  margin-bottom: 8px;
+}
+.row  .row {
+//   margin: 0px -15px;
+}
+* {
+  /* Prevent any object from being highlighted upon touch event*/
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.sticky {
+  position: sticky;
+  top: 0px;
+  z-index: 9999;
+}
+.dropdown-item:focus, .btn:focus {
+  outline: none;
+}
+.alert-dismissible .close {
+  cursor: pointer;
+}
+
+label.btn:hover {
+  text-decoration: none;
+  cursor: pointer;
+}.text-muted, .progress-bar {
+    color: $body-color !important;
+}
+.modal-content, .btn, .jumbotron, .dropdown-toggle::after, .card, .list-group-item  {
+    border: solid 1px $stroke-color !important;
+}
+.app-view-mode-embed .card, .app-view-mode-embed .list-group-item  {
+    border: none !important;
+}
+.app-view-mode-embed .card, .list-group-item  {
+    border-left: none !important;
+    border-right: none !important;
+}
+.app-view-mode-embed .card {
+    border-top: none !important;
+}
+.card-body.header{
+    border-bottom: solid 1px $stroke-color !important;
+}
+.list-group-item {
+    margin-bottom: -1px !important;
+}
+.jumbotron {
+    border: solid 1px  darken($stroke-color, 20%) !important;
+}
+.dropdown-item.active {
+    background-color: $primary !important;
+}
+.dropdown-item:hover, .dark .dropdown-item:focus {
+    outline: solid 1px $stroke-color !important;
+    outline-offset: -1px;
+    background-color: transparent;
+}
+.modal-content, .alert, .dropdown-menu, .card, .list-group-item, .progress-bar {
+    background-color: $body-bg !important;
+}
+.card {
+    background-color: transparent !important;
+}
+.btn {
+    color: $body-color;
+    span {
+        background-color: $body-bg;
+    }
+}
+.btn-danger {
+    background-color: $primary !important;
+}
+
+a {
+    background-color: $primary;
+    padding: 0.2rem;
+    color: $link-color !important;
+}
+a:hover {
+    color: $link-color !important;
+    background-color: transparent;
+    text-decoration: underline !important;
+}
+
+.dropdown-toggle::after {
+    border-color: transparent !important;
+    border-top: 0.3em solid !important;
+    border-right: 0.3em solid transparent !important;
+    border-bottom: 0 !important;
+    border-left: 0.3em solid transparent !important;
+
+}
+
+input, textarea, select {
+    background-color: $primary !important;
+    color: $body-color !important;
+    border: solid 1px $stroke-color !important;
+}
+a.vast-blocker {
+    background: none !important;
+}
+.modal-header {
+    border-bottom: none !important;
+}
+.modal-footer {
+    border-top: none !important;
+}
+.modal-content .close {
+    text-shadow: none !important;
+    color: $stroke-color !important;
+    padding: 0 0;
+    margin: 0 0;
+    &::before, &::after {
+        background-color: transparent !important;
+    }
+
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+.modal-backdrop {
+    opacity: 0.7;
+    // z-index: 999999;
+}
+
+.my-btn-link {
+    background-color: $primary;
+    // color: $body-color !important;
+    &:hover {
+        background: darken($primary, 10%);
+        color: white !important;
+    }
+}
+.btn span {
+    // color: $link-color !important;
+    background: none !important;
+}
+
+@media (max-width: 576px) {
+    .modal-content {
+        border-radius: 0;
+        border-left: none !important;
+        border-right: none !important;
+    }
+    .modal-dialog {
+        width: 100vw;
+        margin: 0;
+    }
+}

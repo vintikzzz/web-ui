@@ -1,0 +1,43 @@
+
+// .large .btn, .large.btn {
+//   padding: 1rem 1.5rem;
+//   letter-spacing: 0.05em;
+// }
+// .large .form-control {
+
+// }
+
+.light .inverse .btn-primary, .light .inverse.btn-primary {
+  border: solid 2px darken($primary, 3%);
+  background-color: lighten($primary, 6%);
+}
+.light .inverse .btn-primary, .inverse.btn-primary {
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  &:hover {
+    background-color: white;
+    border: solid 2px white;
+    color: $primary;
+  }
+}
+// .large .btn-group .dropdown-toggle-split {
+//   margin-left: -2px;
+//   border-left: 0px;
+//   margin-bottom: 8px;
+//   padding: 1rem 1rem;
+//   &:hover {
+//     margin-left: -2px;
+//     border-left: 0px;
+//   }
+// }
+.btn-group .dropdown-toggle-split {
+  margin-bottom: 8px;
+}
+
+.row  .row {
+  margin: 0px -15px;
+}
+
+*{
+  /* Prevent any object from being highlighted upon touch event*/
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}

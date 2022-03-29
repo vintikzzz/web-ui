@@ -1,0 +1,12 @@
+diff --git a/node_modules/google-fonts-webpack-plugin/src/GoogleWebfonts.js b/node_modules/google-fonts-webpack-plugin/src/GoogleWebfonts.js
+index ef21b49..bec7eb0 100755
+--- a/node_modules/google-fonts-webpack-plugin/src/GoogleWebfonts.js
++++ b/node_modules/google-fonts-webpack-plugin/src/GoogleWebfonts.js
+@@ -14,6 +14,7 @@ const FONT_FACE = ({ fontFamily, fontStyle, fontWeight, src, fallback }) => `
+ 	font-family: ${fontFamily};
+ 	font-style: ${fontStyle};
+ 	font-weight: ${fontWeight};
++	font-display: swap;
+ 	${fallback ? `src: ${fallback};` : ""}
+ 	${src.length ? `src: ${src.join(",\n\t\t")};` : ""}
+ }

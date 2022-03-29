@@ -1,0 +1,19 @@
+{
+  "common": {
+    "name": "webtor",
+    "domain": "webtor.io"
+  },
+  "tier hearts": {
+    "bronze": "🤎",
+    "solver": "🤍",
+    "gold": "💛",
+    "emerald": "💚️",
+    "ruby": "❤️",
+    "sparkling": "💖️"
+  },
+  "nav": {
+    "magnet to torrent": "Magnet → Torrent",
+    "torrent to magnet": "Torrent → Magnet",
+    "torrent to ddl": "Torrent → DDL"
+  }
+}

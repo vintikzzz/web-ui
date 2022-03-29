@@ -1,0 +1,282 @@
+{
+  "osdb": {
+    "reference": "Subtiltes brought to you by [OpenSubtitles.org](https://opensubtitles.org)"
+  },
+  "nav": {
+    "blog": "blog",
+    "backers": "backers",
+    "support": "support",
+    "technology": "technology",
+    "dmca": "DMCA"
+  },
+  "form": {
+    "common": {
+      "success": "Request sent successfully!",
+      "error": "Request failed!",
+      "submitting": "Request is submitting...",
+      "button": {
+        "submit": "Submit",
+        "reset": "Clear",
+        "close": "Close",
+        "add": "Add"
+      }
+    },
+    "support": {
+      "header": "Support",
+      "field": {
+        "subject": {
+          "label": "Subject:",
+          "placeholder": "Enter request subject..."
+        },
+        "description": {
+          "label": "Description:",
+          "placeholder": "Enter problem description..."
+        },
+        "infohash": {
+          "label": "Torrent-file infohash:",
+          "placeholder": "Enter infohash of torrent-file...",
+          "error": "Torrent infohash looks like f63b6c45b75197ce22d4602f91c738082ffad8c5"
+        },
+        "filename": {
+          "label": "Filename:",
+          "placeholder": "Enter filename..."
+        },
+        "email": {
+          "label": "Email:",
+          "placeholder": "Enter email..."
+        },
+        "cause": {
+          "label": "Cause:",
+          "option": {
+            "none": "Select one...",
+            "illegal": "Illegal content",
+            "malware": "Malware",
+            "error": "Site error",
+            "question": "Question/Suggestion"
+          }
+        },
+        "work": {
+          "label": "Work:",
+          "placeholder": "Enter work name of infringed work..."
+        }
+      },
+      "error": {
+        "exists": "Request with the same torrent infohash already exists and will be processed soon!"
+      }
+    }
+  },
+  "common": {
+    "player sdk": "See [player-sdk-js](https://github.com/webtor-io/player-sdk-js) for advanced usage",
+    "donate": "Donate",
+    "default": "Default",
+    "episode": "Episode",
+    "previous": "Previous",
+    "next": "Next",
+    "browse": "Browse",
+    "size": "Size",
+    "attached": "Attached",
+    "upload": "Upload",
+    "nosubs": "No subtitles",
+    "nothing found": "Nothing found...",
+    "share": "Share",
+    "zip": "Download as ZIP-archive",
+    "wait download": "Download will start soon...",
+    "download": "Download",
+    "direct download": "Direct download",
+    "torrent download": "Download .torrent file",
+    "loading": "Loading...",
+    "loading torrent": "Magnetizing torrent-file...",
+    "sponsor": "Sponsor",
+    "sponsor login": "Already a Sponsor? Login here!",
+    "greeting": "Hello",
+    "not you": "Not you?",
+    "loading mediainfo": "Retriving mediainfo...",
+    "prepare to play": "Preparing Video Stream... Please Wait...",
+    "open torrent": "Open",
+    "latest torrents": "Your recent torrents",
+    "open demo torrent": "Watch Demo",
+    "copy link": "Copy link",
+    "copy": "Copy",
+    "lang": "en",
+    "apply": "Apply",
+    "back": "Back",
+    "audio": "Audio",
+    "track": "Track",
+    "subtitles": "Subtitles",
+    "subtitle": "Subtitle",
+    "num": "#",
+    "continueFrom": "Continue watching from",
+    "restart": "Start from the begining",
+    "copy hls": "Copy stream url",
+    "paste magnet url": "Paste magnet url or infohash here...",
+    "no recent torrents": "There will be your recent torrents...",
+    "offer": [
+      "Resource **webtor.io** is a fully automated platform,",
+      "that makes it possbile for the users to stream content online,", 
+      "transmitted through the **BitTorrent** protocol. Resource **webtor.io**",
+      "doesn't introduce any content changes during transmission, and it's storing",
+      "is carried out only for the caching purpose for a short period of time.",
+      "Uploading of the torrent-files, magnet-urls, content-transmitting, and also sharing links to the resource", 
+      "**webtor.io** is initiated by the user. Resource **webtor.io**",
+      "is not responsible for the content that was transmitted by users, and also for",
+      "the possible harm that might be made. In case where facts of transmitting",
+      "of harmful or illegal content with the use of the resource **webtor.io**",
+      "are found please use our support feedback form for it's immediate blocking."
+    ],
+    "mode": "mode",
+    "light": "light",
+    "dark": "dark",
+    "share link": "Share",
+    "magnet uri": "Magnet"
+  },
+  "stat": {
+    "transcoding": "Transcoding",
+    "completed": "Completed",
+    "seeding": "Seeding",
+    "restoring": "Restoring state",
+    "initialization": "Fetching torrent",
+    "waiting": "Client initialization",
+    "waiting for peers": "Waiting for peers",
+    "idle": "Idle",
+    "terminated": "Terminated",
+    "from": "from",
+    "peer": "no peers | {n} peer | {n} peers"
+  },
+  "actions": {
+    "download": "Download will start immediately..."
+  },
+  "errors": {
+    "unknown error": "Unknow error",
+    "no peers for transcoding": "Not enough peers, transcoding aborted",
+    "hevc codec is not supported": "HEVC codec is not supported",
+    "resoulution over 1080p is not supported": "Resoulution over 1080p is not supported",
+    "network error": "Network error",
+    "hd video transcoding not supported": "HD-video transcoding not supported",
+    "disconnect": "Connection **unexpectedly** broken",
+    "wrong torrent file": "You have to upload **torrent**-file!",
+    "load": "Unable to load torrent-file! Try to load torrent-file with \"Open torrent online button\"",
+    "load embedded": "Video not available right now...Please try again later...",
+    "timeout": "Timeout occured. No more peers. Try again later.",
+    "transcoding error": "Transcoding error occured",
+    "large files not supported": "Large file are not supported yet (max size **{{maxFileSize}}**).",
+    "abused": "Content access restricted upon request of the Rightholder. Sorry.",
+    "adblock": "🍰  After disabling AdBlock you will gain additional download speed and will support my project!",
+    "win zip": [
+      "Use [7-Zip](https://www.7-zip.org/) under Windows to unpack this archive and ignore all CRC32 errors.",
+      "Archive is not corrupted, it just doesn't have CRC32 check sums, because it is generated on-the-fly."
+    ]
+  },
+  "video": {
+    "ad wait": "You can skip this ad when video will be ready to play",
+    "skip": "Skip"
+  },
+  "magnet to torrent": {
+    "lead": "Convert your magnet uri to torrent file online"
+  },
+  "torrent to ddl": {
+    "lead": "Convert your torrent to direct download link",
+    "features": {
+      "no file size restrictions": "No file size restrictions",
+      "no registration required": "No registration required",
+      "no software required": "No software required",
+      "absolutely free": "Absolutely free"
+    }
+  },
+  "intro": {
+    "header": "Download and play torrents",
+    "header2": "with free online torrent web player and downloader",
+    "faq": "Frequently asked questions",
+    "lead": [
+      "Just paste the magnet link or open the torrent file and start downloading or watching torrent content [safely and anonymously](https://blog.webtor.io/en/anonymous-and-secure/) through your web browser.",
+      "Works instantly without client and registration!"
+    ],
+    "blog welcome": "Welcome to our new blog. You will find there informaton about new improvements and usefull guides!",
+    "sponsor welcome": "Don't forget to support the project! **SPONSOR GAINS ADDITIONAL SPEED AND DOESN'T SEE ADS ANYMORE!**",
+    "extension": {
+      "header": "Chrome Extension",
+      "body": "[Install extension for Google Chrome](https://chrome.google.com/webstore/detail/webtorio-watch-torrents-o/ngkpdaefpmokglfnmienfiaioffjodam) and **Webtor** will open all downloaded torrents and magnet-links in a new tab."
+    },
+    "cast": {
+      "header": "On a big screen",
+      "body": [
+        "**Webtor** can cast video to your TV screen.",
+        "TV box with Google Cast support required."
+      ]
+    },
+    "instant streaming": {
+      "header": "Instant streaming",
+      "body": [
+        "You don't have to wait while the whole file loads.",
+        "**Webtor** will start streaming from the first byte.",
+        "You don't have to think where to download torrents and spend your hard drive space anymore."
+      ]
+    },
+    "download zip": {
+      "header": "Download everything as ZIP-archive",
+      "body": [
+        "**Webtor** easily converts your torrent to ZIP-archive on-the-fly preserving original directory structure.",
+        "Don't need full torrent? Just go to the required folder and push **\"Download as ZIP-archive\"** there!"
+      ]
+    },
+    "on-the-fly transcoding": {
+      "header": "On-the-fly transcoding",
+      "body": [
+        "**Webtor** automatically converts audio and video to the desired playback format suitable for your browser.",
+        "**Webtor** supports video in AVI and MKV formats and lossless FLAC audio."
+      ]
+    },
+    "multiplatform": {
+      "header": "Cross-platform",
+      "body": [
+        "You do not need additional extensions and plug-ins.",
+        "**Webtor** streams torrent-files on any device where the Chrome browser starts, whether it's Windows, Mac or Linux."
+      ]
+    },
+    "free": {
+      "header": "Absolutely free without registration",
+      "body": [
+        "**Webtor** doesn't require to purchase paid subscriptions and it is absolutely free for everyone.",
+        "We do not track your activity and do not store any data about you.",
+        "Your visit is absolutely anonymous."
+      ]
+    },
+    "subtitles": {
+      "header": "🎉 Subtitles",
+      "body": [
+        "**Webtor** automatically loads all available subtitles from [OpenSubtitles.org](https://www.opensubtitles.org/) for your preffered language.",
+        "All subtitles are available under player's **CC** button."
+      ]
+    },
+    "player": {
+      "header": "🚀 Place the webtor-player on your site",
+      "body": [
+        "With the [SDK](https://github.com/webtor-io/embed-sdk-js) you can provide your users with the ability",
+        "to watch torrent-videos online on your website. Popular videos are cached and converted to various formats",
+        "for optimal playback on mobile devices!"
+      ]
+    },
+    "safe": {
+      "header": "Do I need to turn on my VPN when using Webtor? Will my ISP see what I'm downloading?",
+      "body": [
+        "For an ISP, using Webtor is no different from using any other site such as YouTube or Google.",
+        "All information between the user and Webtor is transmitted only over the secure HTTPS protocol, which excludes the possibility of interception.",
+        "The user's IP address is not broadcast to the BitTorrent network, since downloads from the BitTorrent network are only handled by Webtor servers.",
+        "Thus, the use of Webtor is anonymous and safe without any additional measures."
+      ]
+    },
+    "donate": {
+      "header": "Can I remove ads when using Webtor?",
+      "body": [
+        "In order to remove ads, you just need to [start helping the project](https://www.patreon.com/bePatron?u=24145874).",
+        "In addition to removing ads, you will also be able to get faster loading speed and a heart icon in the interface!"
+      ]
+    },
+    "mobile": {
+      "header": "Can I use Webtor on my mobile phone or tablet?",
+      "body": [
+        "Yes! You can use Webtor to download and stream torrents on any mobile device,",
+        "without having to install separate apps."
+      ]
+    }
+  }
+}

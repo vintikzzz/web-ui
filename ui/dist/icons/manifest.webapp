@@ -1,0 +1,14 @@
+{
+  "version": "v1.14.0",
+  "name": "webtor.io",
+  "description": "Any torrents are available online. Just open torrent-file and start watching absolutely free and without registration.",
+  "icons": {
+    "60": "/icons/firefox_app_60x60.png",
+    "128": "/icons/firefox_app_128x128.png",
+    "512": "/icons/firefox_app_512x512.png"
+  },
+  "developer": {
+    "name": "Pavel Tatarskiy",
+    "url": null
+  }
+}

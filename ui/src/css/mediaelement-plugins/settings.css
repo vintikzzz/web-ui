@@ -1,0 +1,10 @@
+.mejs__settings-button,
+.mejs-settings-button {
+    position: relative;
+}
+
+.mejs__settings-button > button,
+.mejs-settings-button > button {
+    background: url('../../assets/settings.svg') transparent no-repeat;
+    background-position: 0 1px;
+}
