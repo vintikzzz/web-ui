@@ -40,4 +40,11 @@ module.exports = function (config, app) {
   }));
   app.use(passport.initialize());
   app.use(passport.session());
+  app.get('/auth/patreon', passport.authenticate('patreon', {
+    scope: ['identity']
+  }));
+  app.get('/auth/patreon/callback', passport.authenticate('patreon', {
+    successRedirect: '/',
+    failureRedirect: '/failed-to-login'
+  }));
 };

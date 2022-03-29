@@ -75,7 +75,4 @@ module.exports = function (config, app, passport) {
     passport.deserializeUser(function (id, done) {
         done(null, id);
     });
-
-    app.get('/auth/patreon', passport.authenticate('patreon', {scope: ['identity']}));
-    app.get('/auth/patreon/callback', passport.authenticate('patreon', { successRedirect: '/', failureRedirect: '/failed-to-login' }));
 }
