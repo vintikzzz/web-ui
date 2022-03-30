@@ -770,7 +770,7 @@ export default function({router, message, db, sdk, ext, i18n, injectHash, inject
             if (adScriptsInited || !getters.displayPopups) return;
             adScriptsInited = true;
             for (const ss of config.adScripts) {
-                if (ss.context && ss.context.embed === false) {
+                if (ss.context && ss.context.embed === false && getters.isEmbedded) {
                     continue;
                 }
                 const s = document.createElement('script');
