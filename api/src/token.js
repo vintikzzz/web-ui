@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const {roleToTier} = require('./roles');
+const getIp = require('./ip');
 
 function generateToken(req, expire, secret) {
     let role = null;
@@ -7,19 +8,10 @@ function generateToken(req, expire, secret) {
         role = req.user.role;
     }
     const start = new Date();
-    let ip = null;
-    if (req.headers['cf-connecting-ip'] != undefined) {
-        ip = req.headers['cf-connecting-ip'];
-    } else if (req.headers['x-forwarded-for'] != undefined) {
-        ip = req.headers['x-forwarded-for'];
-    } else {
-        ip = req.connection.remoteAddress;
-    }
-    ip = ip.split(',')[0];
 
     const data = Object.assign({
         agent: req.headers['user-agent'],
-        remoteAddress: ip,
+        remoteAddress: getIp(req),
         domain: req.refDomain,
         exp: Math.floor(start.getTime() / 1000) + expire,
         sessionID: req.sessionID,

@@ -11,6 +11,7 @@ const morgan = require('morgan');
 const compression = require('compression');
 const YAML = require('yaml');
 const fs = require('fs');
+const getIp = require('./ip');
 
 let configPath = './config.yaml';
 if (process.env.WEBTOR_WEB_UI_CONFIG) {
@@ -26,6 +27,9 @@ if (config.config) {
 
 const app = express();
 app.set('etag', false);
+morgan.token('remote-addr', (req) => {
+  return getIp(req);
+})
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ":referrer" ":user-agent"'));
 app.use(compression());
 app.use(express.static(outputPath, {
