@@ -32,7 +32,14 @@ if (process.env.WEBTOR_WEB_UI_CONFIG) {
   configPath = process.env.WEBTOR_WEB_UI_CONFIG;
 }
 
-let config = YAML.parse(fs.readFileSync(configPath, 'utf8')); // To support helmfile's webtor ui config file
+let config = {};
+
+try {
+  config = YAML.parse(fs.readFileSync(configPath, 'utf8'));
+} catch (e) {
+  console.log(e);
+} // To support helmfile's webtor ui config file
+
 
 if (config.config) {
   config = config.config;
