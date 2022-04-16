@@ -50,6 +50,7 @@ export default function ({i18n, sdk, message, config}) {
         showLogo: (state, getters) => !getters.isEmbedded,
         showDownload: (state, getters) => !getters.isEmbedded,
         showStatus: (state, getters) => !getters.isEmbedded,
+        selfHosted: () => config.selfHosted,
         isAutoplay: (state) => state.autoplay,
         isVideoMode: (state) => state.viewMode == VIDEO,
         isDownloadMode: (state) => state.viewMode == DOWNLOAD,
@@ -58,7 +59,7 @@ export default function ({i18n, sdk, message, config}) {
         underPlayerBanner: (state) => state.underPlayerBanner,
         warnBanner: (state) => state.warnBanner,
         shareLink: (state) => {
-            return 'https://webtor.io/' + state.torrent.infoHash;
+            return window.location.origin + '/' + state.torrent.infoHash;
         },
         magnetURI: (state) => {
             return parseTorrent.toMagnetURI(state.torrent);
@@ -195,7 +196,7 @@ export default function ({i18n, sdk, message, config}) {
             return state.user && state.user.role && state.user.role != 'NOBODY';
         },
         sources: async (state, getters) => {
-            const src = await state.seeder.streamUrl(getters.filePath, clean(getters.metadata), {subdomains: true});
+            const src = await state.seeder.streamUrl(getters.filePath, clean(getters.metadata));
             // const src = new Url('https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8');
             // const src = new Url('http://localhost:8080/index.m3u8');
             const type = sdk.util.getMimeType(src);
@@ -214,7 +215,7 @@ export default function ({i18n, sdk, message, config}) {
             }
             for (let f of state.torrent.files) {
                 if (sdk.util.getMediaType(f.name) == 'image' && f.name.startsWith(getters.fileName)) {
-                    return await state.seeder.streamUrl(f.path, md, { subdomains: true });
+                    return await state.seeder.streamUrl(f.path, md);
                 }
             }
             const videos = getters.currentPrimaryVideoFiles;
@@ -222,7 +223,7 @@ export default function ({i18n, sdk, message, config}) {
                 const files = getters.ls;
                 for (const f of files) {
                     if (sdk.util.getMediaType(f.name) == 'image' && f.name.match(/poster/)) {
-                        return await state.seeder.streamUrl(f.path, md, { subdomains: true });
+                        return await state.seeder.streamUrl(f.path, md);
                     }
                 }
             }

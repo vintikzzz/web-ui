@@ -340,7 +340,7 @@ export default {
               s = context.frag;
             }
             const fname = url.pathname.match(/([^\/]+\.[a-z0-9]+$)/)[0];
-            context.url = await state.seeder.segmentUrl(getters.filePath, fname, s, getters.metadata, {subdomains: true});
+            context.url = await state.seeder.segmentUrl(getters.filePath, fname, s, getters.metadata);
             load(context, config, callbacks);
           };
       }

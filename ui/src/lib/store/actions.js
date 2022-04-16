@@ -59,7 +59,7 @@ export default function({router, message, db, sdk, ext, i18n, injectHash, inject
             if (getters.deliveryType == 'webseed') return;
             const md = clean(getters.metadata);
             md.invoke = false;
-            const data = await state.seeder.mediaInfo(getters.filePath, md, { subdomains: true });
+            const data = await state.seeder.mediaInfo(getters.filePath, md);
             commit(SET_MEDIA_INFO, data);
         },
         async play({ commit, dispatch }) {
@@ -175,7 +175,7 @@ export default function({router, message, db, sdk, ext, i18n, injectHash, inject
         async delivery({ commit, state, getters, dispatch }) {
             if (!state.torrent || !state.file) return;
             const filePath = getters.filePath;
-            const src = await state.seeder.streamUrl(filePath, clean(getters.metadata), { subdomains: true });
+            const src = await state.seeder.streamUrl(filePath, clean(getters.metadata));
             dispatch('log', `Deliver content file=${filePath} url=${src}`)
             dispatch('updateSource');
             dispatch('stats');
@@ -706,7 +706,7 @@ export default function({router, message, db, sdk, ext, i18n, injectHash, inject
                             kind: 'subtitles',
                             label: lang ? lang.nativeName : f.name,
                             srclang: lang ? lang.code : 'en',
-                            src: await state.seeder.streamUrl(f.path, md, { subdomains: true }),
+                            src: await state.seeder.streamUrl(f.path, md),
                             hash: md5(state.infoHash + f.name),
                         });
                     }

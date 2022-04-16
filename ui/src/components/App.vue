@@ -26,8 +26,8 @@
                 <li class="list-inline-item"><b-link target="_blank" href="https://github.com/webtor-io/player-sdk-js">SDK</b-link></li>
                 <li class="list-inline-item"><b-link target="_blank" href="https://github.com/webtor-io/">GitHub</b-link></li>
                 <li class="list-inline-item"><b-link target="_blank" href="https://www.reddit.com/r/webtor/">Reddit</b-link></li>
-                <li class="list-inline-item"><b-link to="dmca">{{ $t('nav.dmca') }}</b-link></li>
-                <li class="list-inline-item"><b-link to="support">{{ $t('nav.support') }}</b-link></li>
+                <li class="list-inline-item" v-if="!selfHosted"><b-link to="dmca">{{ $t('nav.dmca') }}</b-link></li>
+                <li class="list-inline-item" v-if="!selfHosted"><b-link to="support">{{ $t('nav.support') }}</b-link></li>
               </ul>
             </div>
           </b-col>
@@ -245,6 +245,7 @@ export default {
       'title',
       'isEmbedded',
       'showLogo',
+      'selfHosted',
     ]),
 
     appClass() {

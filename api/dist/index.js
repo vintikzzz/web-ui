@@ -32,10 +32,12 @@ if (process.env.WEBTOR_WEB_UI_CONFIG) {
   configPath = process.env.WEBTOR_WEB_UI_CONFIG;
 }
 
-let config = {};
+let config = {
+  selfHosted: true
+};
 
 try {
-  config = YAML.parse(fs.readFileSync(configPath, 'utf8'));
+  config = Object.assign(config, YAML.parse(fs.readFileSync(configPath, 'utf8')));
 } catch (e) {
   console.log(e);
 } // To support helmfile's webtor ui config file
@@ -95,7 +97,8 @@ app.use((req, res, next) => {
     ga: config.ga !== undefined ? config.ga : false,
     adsense: config.adsense !== undefined ? config.adsense : false,
     adScripts: config.adScripts !== undefined ? config.adScripts : [],
-    stoplist: config.stoplist !== undefined ? config.stoplist : []
+    stoplist: config.stoplist !== undefined ? config.stoplist : [],
+    selfHosted: config.selfHosted
   };
   next();
 });
