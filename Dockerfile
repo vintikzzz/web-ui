@@ -9,7 +9,7 @@ COPY patches .
 # Make deps image
 FROM base as deps
 # Install build deps
-RUN apk add --no-cache --update build-base python3
+RUN apk add --no-cache --update build-base python3 git
 # Install npm deps with yarn
 RUN yarn install --prod
 
