@@ -23,7 +23,7 @@ function generateToken(req, expire, secret) {
 
 module.exports = function (config, app) {
     const tokenExpire = 24 * 60 * 60 * 7;
-    const secret = config.secret !== undefined ? config.secret : '23725e7487cb708468819ca3199d35a9';
+    const secret = config.secret;
     app.get('/token', (req, res) => {
         try {
             const data = jwt.verify(req.headers.token, secret);
@@ -37,7 +37,10 @@ module.exports = function (config, app) {
         }
     });
     app.use((req, res, next) => {
-        const t = generateToken(req, tokenExpire, secret);
+        let t = '';
+        if (secret !== undefined) {
+            t = generateToken(req, tokenExpire, secret);
+        }
         req.token = t;
         next();
     });

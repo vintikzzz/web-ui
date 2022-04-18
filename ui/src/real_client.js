@@ -20,6 +20,7 @@ if (window.__INITIAL_STATE__ && window.__INITIAL_STATE__.user) {
 
 const sdk = webtor(Object.assign({
   async getToken() {
+    if (!token) return null;
     const res = await fetch('/token/', {
       headers: {
         token,
