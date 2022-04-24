@@ -26,10 +26,10 @@ import fileToTorrent from './fileToTorrent';
 import {getLangRoute} from './../langRoutes';
 import getRelevantTrack from './../relevantTrack';
 import stoplistCheck from '../stoplistCheck';
+import stringToTorrent from './stringToTorrent';
 const debug = require('debug')('webtor:lib:store');
 const md5 = require('md5');
 const Url = require('url-parse');
-const semver = require('semver');
 const cloneDeep = require('clone-deep');
 const loadScript = require('load-script2');
 import dot from 'dot-object';
@@ -408,9 +408,8 @@ export default function({router, message, db, sdk, ext, i18n, injectHash, inject
             const r = router.currentRoute;
             let torrent = state.torrent;
             if (typeof newTorrent == 'string') {
-                if (newTorrent.match(/^magnet/) || newTorrent.match(/^[a-fA-F0-9]{40}$/)) {
-                    newTorrent = parseTorrent(newTorrent);
-                } else {
+                newTorrent = stringToTorrent(newTorrent);
+                if (!newTorrent) {
                     newTorrent = await dispatch('fetchFromURL', newTorrent);
                 }
             }

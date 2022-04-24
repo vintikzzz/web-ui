@@ -29,10 +29,9 @@ export default {
             this.updating = true;
             const {dispatch} = this.$store;
             try {
-                const torrent = parseTorrent(this.magnetUrl);
                 this.magnetUrlState = null;
                 this.$emit('change');
-                await dispatch('fetchTorrent', torrent);
+                await dispatch('fetchTorrent', this.magnetUrl);
                 this.magnetUrl = '';
             } catch(e) {
                 console.log(e);

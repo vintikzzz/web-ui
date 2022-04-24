@@ -108,7 +108,7 @@
     "continueFrom": "Continue watching from",
     "restart": "Start from the begining",
     "copy hls": "Copy stream url",
-    "paste magnet url": "Paste magnet url or infohash here...",
+    "paste magnet url": "Paste magnet or infohash here...",
     "no recent torrents": "There will be your recent torrents...",
     "offer": [
       "Resource **webtor.io** is a fully automated platform,",

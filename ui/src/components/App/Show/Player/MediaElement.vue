@@ -413,18 +413,18 @@ export default {
               }
             });
             media.hlsPlayer.on(Hls.Events.ERROR, function (event, data) {
-              if (data.details === Hls.ErrorDetails.FRAG_LOAD_ERROR) {
-                // a fragment could not load, even after retrying it X times. Give up and move on
-                debug('Failed segment:', data.frag.relurl);
-                debug('Attempting recovery', failedRecovers);
-                failedRecovers++;
-                if (failedRecovers > 10) {
-                  return;
-                }
-                if (media.getDuration() > media.currentTime + 60) {
-                  media.currentTime = data.frag.start + data.frag.duration + 10;
-                }
-              }
+              // if (data.details === Hls.ErrorDetails.FRAG_LOAD_ERROR) {
+              //   // a fragment could not load, even after retrying it X times. Give up and move on
+              //   debug('Failed segment:', data.frag.relurl);
+              //   debug('Attempting recovery', failedRecovers);
+              //   failedRecovers++;
+              //   if (failedRecovers > 10) {
+              //     return;
+              //   }
+              //   if (media.getDuration() > media.currentTime + 60) {
+              //     media.currentTime = data.frag.start + data.frag.duration + 10;
+              //   }
+              // }
               if (data.fatal) {
                 switch (data.type) {
                   case Hls.ErrorTypes.NETWORK_ERROR:
