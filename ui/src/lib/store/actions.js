@@ -408,9 +408,11 @@ export default function({router, message, db, sdk, ext, i18n, injectHash, inject
             const r = router.currentRoute;
             let torrent = state.torrent;
             if (typeof newTorrent == 'string') {
-                newTorrent = stringToTorrent(newTorrent);
-                if (!newTorrent) {
+                const r = stringToTorrent(newTorrent);
+                if (!r) {
                     newTorrent = await dispatch('fetchFromURL', newTorrent);
+                } else {
+                    newTorrent = r;
                 }
             }
             let source = {};

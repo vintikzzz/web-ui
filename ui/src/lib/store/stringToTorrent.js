@@ -9,5 +9,5 @@ export default function stringToTorrent(s) {
         const t = stringToTorrent(u.query[k]);
         if (t) return t;
     }
-    throw 'failed to parse torrent from string';
+    return false;
 }
