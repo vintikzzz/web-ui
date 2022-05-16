@@ -267,8 +267,13 @@ export default function({router, message, db, sdk, ext, i18n, injectHash, inject
                     let time = 0;
                     let track = null;
                     const tracks = await getters.tracks;
-                    if (tracks.length > 0 && tracks[0].autoselect == true) {
-                        track = tracks[0];
+                    if (tracks.length > 0) {
+                        for (const t of tracks) {
+                            if (t.autoselect) {
+                                track = t;
+                                break;
+                            }
+                        }
                     }
                     if (userData && userData.time) time = userData.time;
                     if (userData && userData.subtitle && userData.subtitle.src) {
@@ -672,19 +677,18 @@ export default function({router, message, db, sdk, ext, i18n, injectHash, inject
 
             for (const s of state.externalSubtitles) {
                 let autoselect = false;
-                if (s.autoselect) autoselect = true;
-                if (s.default || s.default == "") autoselect = true;
+                if (s.autoselect === true) autoselect = true;
+                if (s.default === true || s.default === "") autoselect = true;
                 tracks.push({
                     kind: 'subtitles',
                     label: s.label,
                     srclang: s.srclang,
                     src: await sdk.ext.streamUrl(s.src, {}, md),
-                    hash: md5(s.src),
+                    hash: md5(s.src + s.label),
                     autoselect,
                     type: 'ext',
                 });
             }
-
             for (const s of state.hls.subtitles) {
                 tracks.push({
                     kind: 'subtitles',
@@ -713,7 +717,6 @@ export default function({router, message, db, sdk, ext, i18n, injectHash, inject
                     }
                 }
             }
-
             tracks = processSubtitles(tracks);
             commit(SET_ATTACHED_TRACKS, tracks);
         },
