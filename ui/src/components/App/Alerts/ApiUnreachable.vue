@@ -10,12 +10,6 @@ export default {
     ...mapState([
       'apiUnreachable',
     ]),
-    ...mapState({
-      message(state) {
-        console.log(state.config);
-
-      },
-    }),
     ...mapGetters([
       'apiUrl',
     ]),

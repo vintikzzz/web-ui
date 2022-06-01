@@ -765,6 +765,7 @@ export default function({router, message, db, sdk, ext, i18n, injectHash, inject
             commit(UPDATE_WINDOW_WIDTH);
         },
         async checkApi({commit}) {
+            if (!sdk) return;
             try {
                 await sdk.checkApi();
             } catch (e) {
