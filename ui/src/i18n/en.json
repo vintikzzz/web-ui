@@ -146,6 +146,7 @@
     "download": "Download will start immediately..."
   },
   "errors": {
+    "api unreachable": "API is unreachable. Please turn off your AntiMalware software for domain \"{{apiDomain}}\" and refresh the page to be able to use the service.",
     "unknown error": "Unknow error",
     "no peers for transcoding": "Not enough peers, transcoding aborted",
     "hevc codec is not supported": "HEVC codec is not supported",

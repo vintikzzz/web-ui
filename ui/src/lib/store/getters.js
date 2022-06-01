@@ -282,6 +282,9 @@ export default function ({i18n, sdk, message, config}) {
         },
         hasLogin() {
             return config.patreon;
+        },
+        apiUrl() {
+            return config.sdk.apiUrl;
         }
     };
 };

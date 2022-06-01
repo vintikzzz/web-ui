@@ -16,7 +16,7 @@ import {SET_TORRENT_SUCCESS, SET_PWD_SUCCESS,
         SET_NEW_POSITION, SET_DOWNLOAD_PATH, SET_SEEDER, SET_ZIP_DOWNLOAD,
         SET_ATTACHED_TRACKS, SET_LAST_TIME, SET_FIRST_PLAY, SET_IS_CACHED, SET_NAME,
         SET_DOWNLOAD_STAT, DROP_DOWNLOAD_STAT, SET_DOWNLOAD_TYPE, UPDATE_WINDOW_WIDTH, SET_INITED, SET_PROGRESS,
-        SET_USER_LANG,
+        SET_USER_LANG, SET_API_UNREACHABLE,
        } from './mutationTypes';
 import {PLAYING, PAUSE, SEEKING, ENDED, IDLE} from './playerStatusTypes';
 const debug = require('debug')('webtor:lib:store');
@@ -112,6 +112,9 @@ export default {
     },
     [SET_ADBLOCK_ENABLED](state) {
         state.adblock = true;
+    },
+    [SET_API_UNREACHABLE](state) {
+        state.apiUnreachable = true;
     },
     [SET_LOAD_STATE](state, text) {
         state.loadState = text;

@@ -48,6 +48,7 @@ export default function({user, deb, i18n, router, ssr, locales}) {
         externalTitle: null,
         header: true,
         adblock: false,
+        apiUnreachable: false,
         viewMode: DEFAULT,
         theme: null,
         user,

@@ -15,7 +15,7 @@ import {SET_TORRENT_SUCCESS, SET_PWD_SUCCESS,
         SET_NEW_POSITION, SET_SEEDER, SET_ZIP_DOWNLOAD,
         SET_ATTACHED_TRACKS, SET_LAST_TIME, SET_FIRST_PLAY, SET_IS_CACHED, SET_EXTERNAL_CONTROLS,
         SET_DOWNLOAD_PATH, SET_DOWNLOAD_STAT, DROP_DOWNLOAD_STAT, SET_DOWNLOAD_TYPE,
-        UPDATE_WINDOW_WIDTH, SET_INITED, SET_PROGRESS, SET_USER_LANG,
+        UPDATE_WINDOW_WIDTH, SET_INITED, SET_PROGRESS, SET_USER_LANG, SET_API_UNREACHABLE,
        } from './mutationTypes';
 import {PLAYING, PAUSE} from './playerStatusTypes';
 import {VIDEO, DOWNLOAD} from './viewModeTypes';
@@ -752,6 +752,7 @@ export default function({router, message, db, sdk, ext, i18n, injectHash, inject
         },
         async init({ dispatch, commit }) {
             await Promise.all([
+                dispatch('checkApi'),
                 dispatch('getRecentTorrents'),
                 dispatch('getUserSettings'),
                 dispatch('initRouter'),
@@ -762,6 +763,14 @@ export default function({router, message, db, sdk, ext, i18n, injectHash, inject
         },
         updateWindowWidth({commit}) {
             commit(UPDATE_WINDOW_WIDTH);
+        },
+        async checkApi({commit}) {
+            try {
+                await sdk.checkApi();
+            } catch (e) {
+                commit(SET_API_UNREACHABLE);
+                debug(e);
+            }
         },
         async initWindowWidth({commit}) {
             if (typeof window !== "undefined") {

@@ -6,6 +6,7 @@
     <load />
     <download />
     <ad-block />
+    <api-unreachable />
     <zip />
   </div>
 </template>
@@ -33,8 +34,9 @@ import Load from './Alerts/Load.vue';
 import Abused from './Alerts/Abused.vue';
 import Download from './Alerts/Download.vue';
 import AdBlock from './Alerts/AdBlock.vue';
+import ApiUnreachable from './Alerts/ApiUnreachable.vue';
 import Zip from './Alerts/Zip.vue';
 export default {
-  components: {WrongFormat, DeliveryFailure, Load, Download, Abused, AdBlock, Zip},
+  components: {WrongFormat, DeliveryFailure, Load, Download, Abused, AdBlock, Zip, ApiUnreachable},
 };
 </script>
