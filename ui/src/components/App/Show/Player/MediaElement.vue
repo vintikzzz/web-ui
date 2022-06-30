@@ -402,6 +402,7 @@ export default {
         },
         stretching: this.stretching,
         error: function(e) {
+          debug(e);
           dispatch('player/setError', e);
         },
         async success(media) {

@@ -7,7 +7,7 @@
           <rect :x="s.start" y="0" :width="s.end - s.start" height="100" v-for="s in this.completedSegments" />
         </svg>
       </div>
-      <div class="download-progress" :style="'width: ' + completed / total * 100 + '%'" v-if="download" />
+      <!-- <div class="download-progress" :style="'width: ' + completed / total * 100 + '%'" v-if="download" /> -->
       <div class="web-seeder">
         {{ webSeederMessage }}
       </div>
@@ -88,11 +88,11 @@ export default {
       return false;
     },
     downloadStat() {
-      if (this.download && this.downloadStats[this.path]) {
-        return this.downloadStats[this.path];
-      } else {
+      // if (this.download && this.downloadStats[this.path]) {
+      //   return this.downloadStats[this.path];
+      // } else {
         return false;
-      }
+      // }
     },
     state() {
       if (this.isCompleted) {
@@ -209,19 +209,19 @@ export default {
     //   return numeral(this.stat.speed).format('0.0b') + '/s';
     // },
     completed() {
-      if (this.download) {
-        if (this.downloadStat) {
-          return this.downloadStat.downloaded;
-        } else {
-          return 0;
-        }
-      }
+      // if (this.download) {
+      //   if (this.downloadStat) {
+      //     return this.downloadStat.downloaded;
+      //   } else {
+      //     return 0;
+      //   }
+      // }
       return this.completedPieces.reduce((o, e) => o + e.effectiveLength, 0);
     },
     total() {
-      if (this.download && this.downloadStat && this.downloadStat.length) {
-        return this.downloadStat.length;
-      }
+      // if (this.download && this.downloadStat && this.downloadStat.length) {
+      //   return this.downloadStat.length;
+      // }
       return this.piecesList.reduce((o, e) => o + e.effectiveLength, 0);
     },
     isCompleted() {

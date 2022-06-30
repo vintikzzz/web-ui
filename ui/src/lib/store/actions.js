@@ -134,20 +134,22 @@ export default function({router, message, db, sdk, ext, i18n, injectHash, inject
             window.URL.revokeObjectURL(url);
         },
         async proceedDownload({ dispatch, state, getters, commit }) {
-            let onMessage = (p, m) => {
-                commit(SET_DOWNLOAD_STAT, {p: p, m});
-            };
-            let onEnd = (p, res) => {
-                // setTimeout(() => {
-                //     commit(DROP_DOWNLOAD_STAT, p);
-                // }, 10000);
-            };
+            // let onMessage = (p, m) => {
+            //     commit(SET_DOWNLOAD_STAT, {p: p, m});
+            // };
+            // let onEnd = (p, res) => {
+            //     // setTimeout(() => {
+            //     //     commit(DROP_DOWNLOAD_STAT, p);
+            //     // }, 10000);
+            // };
             let url = null;
             if (state.downloadType == 'zip') {
-                url = await state.seeder.zipUrlWithProgress(state.downloadPath, onMessage, onEnd, clean(getters.metadata));
+                // url = await state.seeder.zipUrlWithProgress(state.downloadPath, onMessage, onEnd, clean(getters.metadata));
+                url = await state.seeder.zipUrl(state.downloadPath, clean(getters.metadata));
                 dispatch('downloadEvent', 'Content Zip Download');
             } else {
-                url = await state.seeder.downloadUrlWithProgress(state.downloadPath, onMessage, onEnd, clean(getters.metadata));
+                // url = await state.seeder.downloadUrlWithProgress(state.downloadPath, onMessage, onEnd, clean(getters.metadata));
+                url = await state.seeder.downloadUrl(state.downloadPath, clean(getters.metadata));
                 dispatch('downloadEvent', 'Content Download');
             }
             dispatch('log', `Download path=${state.downloadPath} type=${state.downloadType} url=${url.href}`)
