@@ -4,7 +4,7 @@ function findKeyword(k, s) {
 }
 
 function findKeywordSpaces(k, s) {
-    return findKeyword(k, s) || findKeyword(k, s.replaceAll(/\s+/g, ''));
+    return findKeyword(k, s) || findKeyword(k, s.replace(/\s+/g, ''));
 }
 
 function findKeywordWithPipes(k, s) {
@@ -27,7 +27,8 @@ function findKeywordWithPlus(k, s) {
     return found;
 }
 export default function(str, stoplist) {
-    const k = str.toLowerCase().replaceAll(/[^\w]/g, ' ').replaceAll(/(\d+)/g, ' $1 ').replaceAll(/\s+/g, ' ');
+    console.log(str, str.toLowerCase());
+    const k = str.toLowerCase().replace(/[^\w]/g, ' ').replace(/(\d+)/g, ' $1 ').replace(/\s+/g, ' ');
     for (const s of stoplist) {
         if (s == "") continue; 
         if (findKeywordWithPlus(k, s)) {

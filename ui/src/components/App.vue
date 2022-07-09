@@ -24,6 +24,7 @@
               <ul class="list-inline d-inline footer-links">
                 <li class="list-inline-item"><b-link target="_blank" :href="blogUrl">{{ $t('nav.blog') }}</b-link></li>
                 <li class="list-inline-item"><b-link target="_blank" href="https://github.com/webtor-io/player-sdk-js">SDK</b-link></li>
+                <li class="list-inline-item"><b-link target="_blank" href="https://rapidapi.com/paveltatarsky-Dx4aX7s_XBt/api/webtor/">API</b-link></li>
                 <li class="list-inline-item"><b-link target="_blank" href="https://github.com/webtor-io/">GitHub</b-link></li>
                 <li class="list-inline-item"><b-link target="_blank" href="https://www.reddit.com/r/webtor/">Reddit</b-link></li>
                 <li class="list-inline-item" v-if="!selfHosted"><b-link to="dmca">{{ $t('nav.dmca') }}</b-link></li>
