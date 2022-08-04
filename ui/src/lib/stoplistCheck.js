@@ -27,7 +27,6 @@ function findKeywordWithPlus(k, s) {
     return found;
 }
 export default function(str, stoplist) {
-    console.log(str, str.toLowerCase());
     const k = str.toLowerCase().replace(/[^\w]/g, ' ').replace(/(\d+)/g, ' $1 ').replace(/\s+/g, ' ');
     for (const s of stoplist) {
         if (s == "") continue; 

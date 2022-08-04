@@ -188,7 +188,7 @@ export default function({router, message, db, sdk, ext, i18n, injectHash, inject
             commit(SET_IS_CACHED, isCached);
             if (state.features.p2pProgress && !isCached && !statsClient) {
                 try {
-                    statsClient = state.seeder.stats('', (path, data) => {
+                    statsClient = await state.seeder.stats('', (path, data) => {
                         // var t0 = performance.now()
                         commit(SET_STAT_SUCCESS, data);
                         // var t1 = performance.now()
