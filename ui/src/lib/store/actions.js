@@ -792,7 +792,12 @@ export default function({router, message, db, sdk, ext, i18n, injectHash, inject
                 const s = document.createElement('script');
                 s.type = 'text/javascript';
                 s.setAttribute('data-cfasync', 'false');
-                s.src = ss.src;
+                if (ss.src) {
+                    s.src = ss.src;
+                } else if (ss.content) {
+                    const content = document.createTextNode(ss.content);
+                    s.appendChild(content);
+                }
                 document.body.appendChild(s);
             }
         },
