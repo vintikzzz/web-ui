@@ -56,6 +56,7 @@ module.exports = function (config, app, passport) {
       }
 
       const d = JSON.parse(res.body);
+      console.log('patreon json body', res.body);
       const user = {
         id: d.data.id,
         firstName: d.data.attributes.first_name,
@@ -81,6 +82,7 @@ module.exports = function (config, app, passport) {
         user.role = roles.SPARKLING_CREATOR;
       }
 
+      console.log('patreon user', user);
       done(null, user);
     });
   }));
