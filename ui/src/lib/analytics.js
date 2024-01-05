@@ -1,16 +1,12 @@
-import Vue from 'vue';
-import VueGtag from 'vue-gtag';
-
 export function analytics({id, appId, appVersion, appName}) {
-  Vue.use(VueGtag, {
-    config: {
-      id: id,
-      appName,
-      appId,
-      appVersion,
-      params: {
-        send_page_view: false,
-      },
-    },
-  });
+  const url = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+  const s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = url;
+  document.body.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', id);
 };
