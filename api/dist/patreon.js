@@ -12,6 +12,35 @@ const {
   roles
 } = require('./roles');
 
+function makeUser(d, patreonCampaignId, patreonRoles) {
+  const user = {
+    id: d.data.id,
+    firstName: d.data.attributes.first_name,
+    lastName: d.data.attributes.last_name,
+    email: d.data.attributes.email,
+    role: roles.NOBODY
+  };
+  const tierIds = jp.query(d, `$.included[?(@.type=="member" && @.relationships.campaign.data.id == "${patreonCampaignId}")].relationships.currently_entitled_tiers..id`);
+
+  for (const [role, id] of Object.entries(patreonRoles)) {
+    if (tierIds.includes(id)) user.role = role;
+  }
+
+  const lastChargeStatus = jp.value(d, `$.included[?(@.type=="member" && @.relationships.campaign.data.id == "${patreonCampaignId}")].attributes.last_charge_status`);
+
+  if (lastChargeStatus && lastChargeStatus !== 'Paid') {
+    user.role = roles.NOBODY;
+  }
+
+  const isCreator = jp.value(d, `$.included[?(@.type=="campaign" && @.id == "${patreonCampaignId}")].relationships.creator.data.id`) == user.id;
+
+  if (isCreator) {
+    user.role = roles.SPARKLING_CREATOR;
+  }
+
+  return user;
+}
+
 module.exports = function (config, app, passport) {
   app.use((req, res, next) => {
     req.config.patreon = config.patreon !== undefined;
@@ -26,12 +55,13 @@ module.exports = function (config, app, passport) {
   }
 
   const patreonCampaignId = config.patreon.campaignId;
+  const patreonTiers = [roles.BRONZE_BACKER, roles.SILVER_BACKER, roles.GOLD_BACKER, roles.EMERALD_SPONSOR, roles.RUBY_SPONSOR];
   const patreonRoles = {};
-  patreonRoles[config.patreon.tiers[0]] = roles.BRONZE_BACKER;
-  patreonRoles[config.patreon.tiers[1]] = roles.SILVER_BACKER;
-  patreonRoles[config.patreon.tiers[2]] = roles.GOLD_BACKER;
-  patreonRoles[config.patreon.tiers[3]] = roles.EMERALD_SPONSOR;
-  patreonRoles[config.patreon.tiers[4]] = roles.RUBY_SPONSOR;
+
+  for (let i = 0; i < config.patreon.tiers.length; i++) {
+    patreonRoles[patreonTiers[i]] = config.patreon.tiers[i];
+  }
+
   passport.use('patreon', new OAuth2Strategy({
     authorizationURL: baseUrl + '/oauth2/authorize',
     tokenURL: baseUrl + '/api/oauth2/token',
@@ -57,31 +87,7 @@ module.exports = function (config, app, passport) {
 
       const d = JSON.parse(res.body);
       console.log('patreon json body', res.body);
-      const user = {
-        id: d.data.id,
-        firstName: d.data.attributes.first_name,
-        lastName: d.data.attributes.last_name,
-        email: d.data.attributes.email,
-        role: roles.NOBODY
-      };
-      const tierIds = jp.query(d, `$.included[?(@.type=="member" && @.relationships.campaign.data.id == "${patreonCampaignId}")].relationships.currently_entitled_tiers..id`);
-
-      for (const id in patreonRoles) {
-        if (tierIds.includes(id)) user.role = patreonRoles[id];
-      }
-
-      const lastChargeStatus = jp.value(d, `$.included[?(@.type=="member" && @.relationships.campaign.data.id == "${patreonCampaignId}")].attributes.last_charge_status`);
-
-      if (lastChargeStatus && lastChargeStatus !== 'Paid') {
-        user.role = roles.NOBODY;
-      }
-
-      const isCreator = jp.value(d, `$.included[?(@.type=="campaign" && @.id == "${patreonCampaignId}")].relationships.creator.data.id`) == user.id;
-
-      if (isCreator) {
-        user.role = roles.SPARKLING_CREATOR;
-      }
-
+      const user = makeUser(d, patreonCampaignId, patreonRoles);
       console.log('patreon user', user);
       done(null, user);
     });
