@@ -74,6 +74,7 @@ module.exports = function (config, app, passport) {
                 }
                 const d = JSON.parse(res.body);
                 console.log('patreon json body', res.body);
+                console.log('patreon roles', patreonRoles);
                 const user = makeUser(d, patreonCampaignId, patreonRoles);
                 console.log('patreon user', user);
                 done(null, user);
