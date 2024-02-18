@@ -1,19 +1,13 @@
 const assert = require('assert');
 const rewire = require('rewire');
 const patreon = rewire('../patreon.js');
-const { roles } = require('../roles');
-const tiers = [
-  "3981231",
-  "3972747",
-  "3981014",
-  "3981042",
-  "3981061"
-];
 const patreonCampaignId = 3166075;
-const patreonTiers = [roles.BRONZE_BACKER, roles.SILVER_BACKER, roles.GOLD_BACKER, roles.EMERALD_SPONSOR, roles.RUBY_SPONSOR];
-const patreonRoles = {};
-for (let i = 0; i < tiers.length; i++) {
-  patreonRoles[patreonTiers[i]] = tiers[i];
+const patreonRoles = {
+  BRONZE_BACKER: 3981231,
+  SILVER_BACKER: 3972747,
+  GOLD_BACKER: 3981014,
+  EMERALD_SPONSOR: 3981042,
+  RUBY_SPONSOR: 3981061
 }
 const makeUser = patreon.__get__('makeUser'); 
 

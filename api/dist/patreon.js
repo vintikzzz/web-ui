@@ -23,7 +23,7 @@ function makeUser(d, patreonCampaignId, patreonRoles) {
   const tierIds = jp.query(d, `$.included[?(@.type=="member" && @.relationships.campaign.data.id == "${patreonCampaignId}")].relationships.currently_entitled_tiers..id`);
 
   for (const [role, id] of Object.entries(patreonRoles)) {
-    if (tierIds.includes(id)) user.role = role;
+    if (tierIds.includes(id.toString())) user.role = role;
   }
 
   const lastChargeStatus = jp.value(d, `$.included[?(@.type=="member" && @.relationships.campaign.data.id == "${patreonCampaignId}")].attributes.last_charge_status`);
