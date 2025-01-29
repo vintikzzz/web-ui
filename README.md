@@ -1,11 +1,12 @@
-# web-ui
+# ⚠️ Archived Repository ⚠️
 
-[webtor.io](https://webtor.io) web UI
+This repository (`web-ui-v1`) has been **archived** and is no longer maintained.  
 
-## Usage
+## 🚀 New Version Available  
 
-```
-yarn add patch-package postinstall-postinstall --dev
-yarn install
-yarn start
-```
+A newer and improved version of this project is now available at:  
+👉 **[Webtor.io Web UI](https://github.com/webtor-io/web-ui)**  
+
+Please refer to the new repository for the latest updates, bug fixes, and ongoing development.  
+
+Thank you for your support! 🙌  
